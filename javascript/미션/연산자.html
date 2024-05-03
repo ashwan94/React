@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연산자</title>
+  </head>
+  <body>
+    <script>
+      /* 문제1.
+         주어진 변수의 데이터 타입이 문자열인지 확인
+         단, 삼항 연산자 활용(if문 노노)
+         문자열이라면 콘솔에 "문자길이는 (n)입니다" 출력
+         문자열이 아니라면 콘솔에 "문자열이 아닙니다" 출력
+      */
+      const str = "Javascript 재밌다";
+      console.log(
+        typeof str == "string"
+          ? `문자열의 길이는 ${str.length} 입니다`
+          : "문자열이 아닙니다"
+      );
+      console.log(typeof str);
+
+      /* 문제2.
+         주어진 세 숫자 중에서 가장 큰 수를 찾기
+         단, 삼항 연산자 활용하기(if문 노노)
+         콘솔에 "가장 큰수는 n입니다" 출력
+      */
+      const numA = 50;
+      const numB = 100;
+      const numC = 70;
+      console.log(
+        numA > numB
+          ? `가장 큰 수는 ${numA} 입니다`
+          : numB > numC
+          ? `가장 큰 수는 ${numB}입니다`
+          : `가장 큰 수는 ${numC}입니다`
+      );
+
+      // 개선된 code
+      const numResult =
+        numA > numB && numA > numC ? numA : numB > numC ? numB : numC;
+      console.log(`가장 큰 수는 ${numResult} 입니다.`);
+
+      /* 문제3.
+         해당 값들과 논리연산자만을 활용해서
+         콘솔에 "초깃값은 10입니다" 출력
+      */
+      const value1 = null;
+      const value2 = 10;
+      console.log(value1 && value ? "10" : "초깃값은 10입니다");
+
+      // 개선된 code
+      console.log(`초깃값은 ${value1 || value2} 입니다`);
+    </script>
+  </body>
+</html>
