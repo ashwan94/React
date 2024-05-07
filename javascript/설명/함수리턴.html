@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 리턴</title>
+</head>
+<body>
+    <script>
+        /* 함수 리턴 : 외부로 데이터 반환, 함수 실행 종료의 기능을 한다 */
+        const sum = (p1, p2) => {
+            const result = p1 + p2;
+            return result;
+        }
+        const returnVal = sum(1,2);
+        console.log(returnVal);
+
+        /* 사용자 이름 출력
+            04.11 짱구는 출력에서 제외하기로 함
+            안승환
+        */
+        const getUserName = () => {
+            const userName = prompt("이름 입력");
+            if(userName == "짱구"){
+                return;
+            }
+            console.log(userName);
+        }
+        getUserName();
+    </script>
+</body>
+</html>
