@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>타이머 함수</title>
+  </head>
+  <body>
+    <script>
+      /* setTimeout : 특정시간 이후에 발생
+       setInterval & clearInterval : 특정시간 동안 반복 실행 */
+
+      // setInterval(콜백 함수, 시간)
+      function greeting() {
+        console.log("안녕1");
+      }
+    //   setInterval(greeting, 1000);
+
+    // 많이 쓰는 표현(익명 함수)
+    // setInterval(() => {
+    //     console.log("안녕22")
+    // },2000);
+
+        let count = 0;
+        // timer 라는 변수가 먼저 메모리에 올라간다
+        const timer = setInterval(function() {
+            console.log("안녕333");
+            count++;
+            if(count == 2) {
+                clearInterval(timer);
+            };
+        }, 2000);
+
+        // setTimeout(콜백함수, 시간);
+        setTimeout(() => {
+            alert("집");
+        }, 2000);
+
+    </script>
+  </body>
+</html>

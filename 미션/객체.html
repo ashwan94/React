@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map과 Set</title>
+  </head>
+  <body>
+    <script>
+      /* 문제1. 중복요소 제거하기
+         1) deduplication 함수 생성
+         2) deduplication 인수로 fruitArray1,fruitArray2,fruitStr1,fruitStr2 넘기기
+         3) deduplication 함수는 인수로 받은 값의 중복을 제거한 새로운 배열 리턴
+
+         **결과: ["바나나", "복숭아", "사과", "포도", "오렌지"]
+      */
+     console.log("-----------문제1----------");
+
+      const fruitArray1 = ["바나나", "복숭아", "사과"];
+      const fruitArray2 = ["복숭아", "포도"];
+      const fruitStr1 = "사과";
+      const fruitStr2 = "오렌지";
+
+      // const deduplication = (...param) => {
+      //   const newSet = new Set(param);
+      //   console.log(newSet);
+      // }
+      // deduplication(...fruitArray1, ...fruitArray2, fruitStr1, fruitStr2);
+
+      // -------------- 선생님 풀이 --------------------
+      const deduplication = (...param) => {
+        const fruits = new Set(param);
+        console.log(fruits);
+
+        return fruits;
+      }
+      deduplication(...fruitArray1, ...fruitArray2, fruitStr1, fruitStr2);
+
+
+
+      /* 문제2. Map을 사용한 단어 빈도수 계산
+         1) countWords 함수 생성
+         2) countWords 인수로 sentence 넘기기
+         3) countWords 기능
+            - 매개변수로 받은 문자열의 각 단어별 횟수 리턴
+            - 단어별 횟수는 map에 담기
+            - 단, 띄어쓰기는 제외하고 담기
+
+            **결과: {'I'=>1, 'a'=>2, 'm'=>1, 'h'=>1, 'p'=>2, 'y'=>1}
+      */
+      console.log("-----------문제2----------");
+      const sentence = "I am happy";
+      // const countWords = (param) => {
+      //   let newMap = new Map();
+
+      //   for(p of param){
+      //     if(p != " ") {
+            
+      //       if(newMap[p]) {
+      //         newMap[p]++;
+      //       }else{
+      //         newMap[p] = 1;
+      //       }
+      //     }
+      //   }
+      //   console.log(newMap);
+      // }
+      // countWords(sentence);
+
+        // -------------- 선생님 풀이 --------------------
+        const countWords = (param) => {
+          const sentenceMap = new Map();
+
+          for(item of param) {
+            if(item == " "){
+              continue;
+            }
+            const count = sentenceMap.get(item) || 0 // 글자의 횟수 측정
+            sentenceMap.set(item, count + 1);
+          }
+          console.log(sentenceMap);
+        }
+        countWords(sentence);
+
+
+
+      /* 문제. 키와 값 반전 
+         1) invertMap 함수 생성
+         2) invertMap 인수로 originMap 넘기기
+         3) 넘겨받은 파라미터의 키, 값이 반전된 새로운 map객체 리턴
+
+         **결과: {1=>'a', 2=>'b', 3=>'c'}
+      */
+      console.log("----------문제3----------");
+
+      const originMap = new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+      ]);
+
+      // const invertMap = (param) => {
+      //   let keyArr = [];
+      //   let newMap = new Map();
+
+      //   param.keys().forEach(k => {
+      //     keyArr.push(k);
+      //   })
+        
+      //   param.forEach(p => {
+      //     newMap.set(p, keyArr[p-1]);
+      //   })
+      //   return newMap;
+      // }
+      // console.log(invertMap(originMap));
+
+        // -------------- 선생님 풀이 --------------------
+        const invertMap = (param) => {
+          const result = new Map();
+          for(key of param.keys()){
+            result.set(param.get(key), key);
+          }
+          console.log(result);
+          return result;
+        }
+        invertMap(originMap);
+
+
+      /* 문제4. 성적별 학생들 그룹묶기 
+         1) groupByGrade 함수 생성
+         2) groupByGrade 인수로 students 넘기기
+         3) 성적별 학생 명단 map 객체로 리턴
+
+         **결과: {"A"=> Array(2), "B"=>Array(2), "C"=>Array(1)}
+                 {"A"=>['Alice','Charlie'], "B"=>['Bob','Eve'], "C"=>["David"]}
+      */
+      console.log("----------문제4----------");
+
+      // 풀다 만 내용
+      // 왜 계속 중복이 제거되는걸까...
+      // Map 은 중복 불가능
+      const students = [
+        { id: 1, name: "Alice", grade: "A" },
+        { id: 2, name: "Bob", grade: "B" },
+        { id: 3, name: "Charlie", grade: "A" },
+        { id: 4, name: "David", grade: "C" },
+        { id: 5, name: "Eve", grade: "B" },
+      ];
+
+      // const groupByGrade = (param) => {
+      //   let newMap = new Map();
+
+      //   param.forEach(p => {
+      //     if(p.grade == "A") {
+      //       newMap[p.grade] = p;
+      //     }else if(p.grade =="B"){
+      //       newMap[p.grade] = p;
+      //     }else{
+      //       newMap[p.grade] = p;
+      //     }
+      //   })
+      //   console.log(newMap);
+
+      // }
+      // groupByGrade(students);
+
+      // -------------- 선생님 풀이 --------------------
+        const groupByGrade = (param) => {
+          const result = new Map();
+          for(item of param){
+            if(!result.has(item.grade)){
+              result.set(item.grade, []);
+            }
+            result.get(item.grade).push(item.name); // return 값은 array 의 length 이므로 이걸 기준으로 예외처리 가능
+          }
+          console.log(result);
+          return result;
+        }
+        groupByGrade(students);
+    </script>
+  </body>
+</html>

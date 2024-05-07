@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>전개구문</title>
+  </head>
+  <body>
+    <script>
+      /* 전개구문 : 배열처럼 값이 다양한 자료(객체)를 한꺼번에 인수로 넘겨줄때
+                      배열과 배열을 하나의 덩어리로 합칠 때
+        spread 연산자 사용(...)
+        */
+
+      const arr = ["사과", "바나나", "복숭아"];
+      console.log(arr);
+      console.log(...arr);
+
+      const arr2 = ["메론", "수박"];
+      console.log([...arr, ...arr2]);
+      // 상태값 변화를 강제로 감지시켜주는 기능을 한다
+
+      const obj = { name: "신짱구" };
+      const obj2 = { age: 5 };
+
+      // console.log(...obj); 에러 난다
+      console.log({ ...obj, ...obj2 }); // 객체 2개가 합쳐졌다
+
+      const addNum = (p1, p2) => {
+        console.log(p1 + p2);
+      };
+
+      addNum(1, 2);
+      addNum(1, 2, 3, 4); // 3, 4는 버려짐
+
+      /* 나머지 매개변수 */
+      const addNum2 = (...param) => {
+        // 모든 parameter 들이 Array 로 들어온다
+        console.log(param); // parmeter 개수를 알아서 인지해준다
+
+        let sum = 0;
+        for (item of param) {
+          sum += item;
+        }
+      };
+      addNum2(1, 2);
+      addNum2(1, 2, 3, 4);
+
+      const arry1 = [10, 20, 30, 40, 50];
+      const arry2 = [20, 30, 40, 50, 60];
+      const num1 = 10;
+      const num2 = 20;
+      // 함수를 하나 정의 내리고 그 함수의 인수로 위의 4가지 변수를 모두 넘겨서
+      // 가장 큰 숫자 하나를 콘솔에 출력
+
+      // ---------------- 선생님 풀이 ------------------
+      const sum = (...param) => {
+        console.log(sum);
+        let max = param[0];
+        for(item of param) {
+            if(item > max){
+                max = item;
+            }
+        }
+        return max;
+      }
+      const result1 = sum(...arry1, ...arry2, num1, num2);
+      console.log(result1);
+      // ---------------- 풀던 거 --------------------
+      // join() 을 하게 되면 모든 element 가 string 으로 변환되는데 여기서 어떻게 할 것인지?
+    //   const checkMax = (...param) => {
+    //     console.log(param);
+
+    //     for(el of param){
+    //         console.log(el);
+    //     }
+        
+    //     const item = param.join();
+    //     // console.log(item);
+    //     let max = 0;
+
+    //     for (i of item) {
+    //       if(i > max){
+    //         max = i;
+    //         // console.log(max);
+    //       }
+    //     }
+    //   };
+
+    //   let result = checkMax(arry1, arry2, num1, num2);
+    //   console.log(result);
+
+      //   for(el of num1){
+      //     console.log("123");
+      //   }
+
+      
+    </script>
+  </body>
+</html>

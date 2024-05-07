@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>타이머함수</title>
+  </head>
+  <body>
+    <script>
+      /* 문제1. 카운트다운 타이머함수
+
+         1) countdownTimer 함수 생성
+         2) countdownTimer 인수로 초 넘기기
+         3) 초가 1초마다 줄어들 때 콘솔에 n초 출력
+         3) 초가 다 되었을 때 타이머 종료 콘솔 출력
+         4) 타이머 정리 꼭 하기
+      */
+      const sec = 5;
+      const countdownTimer = (param) => {
+        const timer = setInterval(() => {
+          console.log(param);
+          param--;
+
+          // 타이머 정리
+          if (param == 0) {
+            clearInterval(timer); // 타이머 정리하려면 변수를 parameter 로 넣어야함
+            console.log("타이머 정리");
+          }
+        }, 1000);
+      };
+      countdownTimer(sec);
+
+      /* 문제2. 기본 타이머 생성하기
+
+         1) turnOffTimer 함수 생성
+         2) turnOffTimer 인수로 n초 넘기기
+         3) 인수로 넘겨받은 초가 모두 끝난 뒤 타이머 정리
+         4) 3)의 작업 이후 2초 후 타이머 완전 종료 콘솔 출력
+      */
+      
+
+      function turnOffTimer(param) {
+        const timer = setInterval(() => {
+          console.log(`${param}초`);
+          param--;
+
+          // 타이머 정리
+          if(param == 0){
+            clearInterval(timer);
+
+            // 타이머 정리 2초 후 콘솔에 메세지 출력
+            setTimeout(() => {
+              console.log("타이머 진짜 종료");
+            }, 2000);
+          }
+        }, 1000);
+      }
+      turnOffTimer(sec);
+
+
+
+      /* 문제3. 일정 시간 간격 메세지 출력 타이머 함수
+      
+         1) showMessage 함수 생성
+         2) showMessage 인수로 초, textArr 배열 넘기기
+         3) 사용자에게 입력받은 초를 textArr 길이에 맞게 균등 분배
+            균등분배한 초마다 메세지 하나씩 콘솔 출력
+            ex. 사용자가 12초 입력시 4초마다 textArr 순서대로 하나씩 출력
+         4) 타이머 정리 꼭 하기
+      */
+      const seconds = 12;
+      const textArr = ["안녕", "잘가", "내일봐"];
+
+      const showMessage = (sec, arr) => {
+        const timerSec = (sec * 1000) / arr.length;
+        let index = 0;
+        const timer = setInterval(() => {
+          console.log(arr[index]);
+          index++;
+
+          if(index == arr.length) {
+            clearInterval(timer);
+          }
+        }, timerSec);
+      }
+      showMessage(seconds, textArr);
+    </script>
+  </body>
+</html>

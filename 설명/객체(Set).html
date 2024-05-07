@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>객체(Set)</title>
+  </head>
+  <body>
+    <script>
+      /* Key 없이 여러 개의 value 를 담아준 객체(배열과 비슷) 
+           중복 불가
+        */
+       const arr = [1,2,3,4,4 ];
+      const newSet = new Set(arr);
+      console.log(newSet);
+
+        console.log(newSet.has(1)); // true
+        console.log(newSet.has("1")); // false
+        // has() : data type 까지 check 하는것을 알 수 있다
+
+    </script>
+  </body>
+</html>

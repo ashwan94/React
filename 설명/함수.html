@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>함수</title>
+  </head>
+  <body>
+    <script>
+      /* 함수정의방법(3가지) */
+      // 1. 함수선언문으로 정의
+      function gugudan() {
+        for (let i = 1; i < 10; i++) {
+          console.log(2 * i);
+        }
+      }
+
+      gugudan();
+
+      // 2. 함수표현식으로 정의
+      // 익명 함수로 사용해봄(이름이 없는 함수)
+      // 메모리의 주소값을 갖고 있다
+      const gugudan2 = function () {
+        for (let i = 1; i < 10; i++) {
+          console.log(2 * i);
+        }
+      };
+
+      gugudan2();
+
+      // 반드시 어딘가에 할당해야 한다
+      // 위와 같은 기능이지만 구조만 다름
+      // parameter 를 받을 수 있다
+      const gugudan3 = (param) => {
+        for (let i = 1; i < 10; i++) {
+          console.log(param * i);
+        }
+      };
+      gugudan3(5, 1);
+    </script>
+  </body>
+</html>
