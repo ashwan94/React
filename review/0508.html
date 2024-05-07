@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>0508 수업 자료</title>
+  </head>
+  <body>
+    <script>
+      /* 문제2. Map을 사용한 단어 빈도수 계산
+         1) countWords 함수 생성
+         2) countWords 인수로 sentence 넘기기
+         3) countWords 기능
+            - 매개변수로 받은 문자열의 각 단어별 횟수 리턴
+            - 단어별 횟수는 map에 담기
+            - 단, 띄어쓰기는 제외하고 담기
+
+            **결과: {'I'=>1, 'a'=>2, 'm'=>1, 'h'=>1, 'p'=>2, 'y'=>1}
+      */
+      console.log("-----------문제2----------");
+      const sentence = "I am happy";
+
+      const countWord = (param) => {
+        const sentenceMap = new Map();
+
+        for (item of param) {
+          if (item == " ") {
+            continue;
+          }
+          const count = sentenceMap.get(item) || 0;
+          sentenceMap.set(item, count + 1);
+        }
+        console.log(sentenceMap);
+      };
+      countWord(sentence);
+
+      /* 문제. 키와 값 반전 
+         1) invertMap 함수 생성
+         2) invertMap 인수로 originMap 넘기기
+         3) 넘겨받은 파라미터의 키, 값이 반전된 새로운 map객체 리턴
+
+         **결과: {1=>'a', 2=>'b', 3=>'c'}
+      */
+      console.log("----------문제3----------");
+
+      const originMap = new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+      ]);
+
+      const invertMap = (param) => {
+        const result = new Map();
+        for (key of param.keys()) {
+          result.set(param.get(key), key);
+        }
+        console.log(result);
+        return result;
+      };
+      invertMap(originMap);
+
+      /* 문제4. 성적별 학생들 그룹묶기 
+         1) groupByGrade 함수 생성
+         2) groupByGrade 인수로 students 넘기기
+         3) 성적별 학생 명단 map 객체로 리턴
+
+         **결과: {"A"=> Array(2), "B"=>Array(2), "C"=>Array(1)}
+                 {"A"=>['Alice','Charlie'], "B"=>['Bob','Eve'], "C"=>["David"]}
+      */
+      console.log("----------문제4----------");
+
+      const students = [
+        { id: 1, name: "Alice", grade: "A" },
+        { id: 2, name: "Bob", grade: "B" },
+        { id: 3, name: "Charlie", grade: "A" },
+        { id: 4, name: "David", grade: "C" },
+        { id: 5, name: "Eve", grade: "B" },
+      ];
+
+      const groupByGrade = (param) => {
+        const result = new Map();
+        for (item of param) {
+          if (!result.has(item.grade)) {
+            result.set(item.grade, []);
+          }
+          result.get(item.grade).push(item.name);
+        }
+        console.log(result);
+        return result;
+      };
+      groupByGrade(students);
+
+
+      /* 문제1. 가장 많이 등장하는 문자 반환하는 함수 생성하기
+         
+         1) maxRepeatChar 함수 생성
+         2) maxRepeatChar 호출 시 검증할 문자열을 인수로 보내기
+         2) maxRepeatChar 리턴값으로 {maxChar: 많이나온글자, maxCount: 최대횟수}
+      */
+      const text = "Let's study JavaScript!";
+
+      const maxRepeatChar = (param) => {
+        const charObject = {};
+        let maxChar = "";
+        let maxCount = 0;
+
+        for(item of param){
+            if(charObject[item]) {
+                charObject[item]++;
+            }else{
+                charObject[item] = 1; // false 가 아닐 경우 무조건 작동
+            }
+            if(charObject[item] > maxCount) { // 최종 출력할 data 입력
+                maxCount = charObject[item];
+                maxChar = item;
+            }
+        }
+        return {maxChar : maxChar, maxCount : maxCount};
+      }
+      console.log(maxRepeatChar(text));
+    </script>
+  </body>
+</html>

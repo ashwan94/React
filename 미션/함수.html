@@ -26,7 +26,7 @@
             charObject[item]++;
           } else {
             //키의 값이 미존재
-            charObject[item] = 1;
+            charObject[item] = 1; // undefined 가 난다면 falsy 이므로 false 로 작동
           }
           // 최대숫자인지 체크 후 교체
           if (charObject[item] > maxCount) {
