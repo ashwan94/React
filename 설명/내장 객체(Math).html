@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내장 객체(Math)</title>
+</head>
+<body>
+    <script>
+        /* Math 객체 : js -> 소수 합산 이상함 */
+        // 자주 쓰는 함수
+        const num = 10.3;
+
+        // floor() : 내림
+        console.log(Math.floor(num)); // 10 나옴
+        
+        // ceil() : 올림
+        console.log(Math.ceil(num)); // 11 나옴
+        
+        // round() : 반올림
+        console.log(Math.round(num)); // 10 나옴
+        
+        // toFiexd() : 소수점 자릿 수 지정
+        console.log(Math.PI); // 10 나옴
+        console.log(Math.PI.toFixed(2)); // 10 나옴
+
+        // random() : 난수 생성(0 ~ 1)
+        const num2 = Math.floor(Math.random() * 100) + 1; // 1부터 100까지 표현
+        console.log(`num2 : ${num2}`);
+
+    </script>
+</body>
+</html>

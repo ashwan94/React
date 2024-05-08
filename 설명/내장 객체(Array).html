@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>내장 객체(Array)</title>
+  </head>
+  <body>
+    <script>
+      /* Property, method */
+      const arr = [10, 20, 30, 40];
+      const arr2 = new Array();
+      // 둘 다 동일한 내용
+
+      console.log(arr);
+
+      // 찾기, 변형 관련 method
+      arr.forEach((ele) => {
+        console.log(ele);
+      });
+
+      // find() : 함수를 통해 판별되어 일치하는 첫번째 값만 반환
+      const result = arr.find(function (ele){
+        return ele > 20;
+      });
+      console.log(result);
+      
+      // findIndex() : index 숫자를 반환
+      const resultIndex = arr.findIndex((ele) => {
+        return ele > 20;
+      });
+      console.log(resultIndex);
+
+      // filter() : 함수를 통해 판별되어 일치하는 값들을 array 로 반환
+      const result2 = arr.filter((ele) => {
+        return ele > 20;
+      });
+      console.log(result2);
+
+      // return 을 써야하는때, 쓰지 않아도 되는때 (중괄호 여부)
+      const result3 = arr.filter((ele) => ele > 20);
+      console.log("=>", result3);
+
+      // 기본 function 은 반드시 { } 를 써야하지만
+      // 람다식(=>) 은 실행문이 1개라면 중괄호 생략이 가능함(자동으로 return 해줌)
+      // 반대로 중괄호를 쓰는 순간 반드시 return 을 써줘야함
+      
+      // map() : 각 요소를 돌면서 함수를 적용(실행) => 배열로 변환
+      const result4 = arr.map((ele) => {
+        return ele * 2;
+      });
+      console.log(result4);
+
+      const result5 = arr.map((ele) => ele * 2);
+      console.log(result5);
+
+      // reduce() : 값을 하나로 누적
+      // acc : 누적 값   curr : 현재 값 /함수, ?(초깃값)
+      const result6 = arr.reduce((acc, curr, index) => {
+        return acc + curr;
+      }, 0); // 누적된 초깃값을 0으로 설정해줌
+      console.log(result6);
+
+      // push() : 길이를 반환
+      const result7 = arr.push(60);
+      console.log(result7);
+
+    </script>
+  </body>
+</html>

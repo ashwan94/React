@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>동기, 비동기</title>
+  </head>
+  <body>
+    <script>
+      function displayA() {
+        console.log("A");
+      }
+
+      // 비동기처리
+      function displayB() {
+        setTimeout(() => {
+          return "apple ";
+        }, 3000);
+      }
+
+      function displayC() {
+        console.log("C");
+      }
+
+      displayA();
+      displayB();
+      displayC();
+      
+
+      // 1. 콜백 함수
+      function displayD(){
+        console.log("D");
+      }
+
+      function displayE(callback){
+        setTimeout(() => {
+            console.log(`B`);
+            // callback();
+        }, 2000);
+      }
+      function displayF(){
+        console.log("C");
+      }
+
+      displayD(displayE());
+
+    </script>
+  </body>
+</html>

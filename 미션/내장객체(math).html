@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.log("---------- 문제 1 ----------");
+      /* 문제1. 사용자에게 입력받은 반지름을 통해 원의 넓이, 둘레 구하기 
+         1) circleInfo 함수 생성
+         2) circleInfo 인수로 radius 넘기기
+         - radius(반지름)를 활용해서 원의 넓이, 둘레 구하기
+         3) circleInfo 리턴값: {area: 넓이값, circum: 둘레값}
+         단, 넓이, 둘레 모두 소수점 3자리까지만 출력
+      
+         Math.PI 사용하기
+         결과: {area: 78.540, circum: 31.416}
+      */
+      const radius = 5;
+      function circleInfo(r) {
+        const circumference = (2 * (Math.PI * r)).toFixed(3);
+        const circumWidth = (Math.PI * (r * r)).toFixed(3);
+        const result = { area: circumference, circum: circumWidth };
+        return result;
+      }
+      console.log(circleInfo(radius));
+
+      console.log("---------- 문제 2 ----------");
+      /* 문제2. 주어진 문자열 배열에서 무작위로 하나의 단어를 선택하는 함수 
+         1) getRandomWord 함수 생성
+         2) getRandomWord 인수로 wordList 넘기기
+         3) 무작위로 랜덤한 하나의 단어 출력하기(힌트. 랜덤메서드 통해 랜덤한 인덱스 출력)
+         4) getRandomWord 리턴값:  무작위로 출력된 단어
+      */
+      let wordList = ["apple", "banana", "orange", "grape", "kiwi"]; //0 ~ 4
+
+      function getRandomWord(param) {
+        const rand = Math.floor(Math.random() * param.length);
+        return param[rand];
+      }
+      console.log(getRandomWord(wordList));
+
+      const wordList1 = () => {
+        // 내용 입력
+      };
+
+      console.log("---------- 문제 3 ----------");
+      /* 문제3. 무작위로 생성된 10개의 숫자로 이루어진 배열에서 짝수, 홀수 갯수 세는 함수 작성하기 
+         1. randomList 함수 생성
+         1-1. randomList 함수 통해 랜덤한 수로 10개로 구성된 배열 리턴
+         2. countEvenOdd 함수 생성
+         2-1. randomList 함수의 리턴값을 인수로 받기
+         2-2. 인수로 받은 배열에서 짝수의 갯수와 홀수의 갯수 리턴
+         2-3. countEvenOdd 리턴값: { list: 배열, even: 짝수갯수, odd: 홀수갯수 }
+      */
+
+      function randomList() {
+        const list = new Set();
+        const even = [];
+        const odd = [];
+
+        for (let i = 0; i < 10; i++) {
+          const rand = Math.floor(Math.random() * 10);
+          list.add(rand);
+          if (list.size != 10) {
+            i--;
+          }
+        }
+
+        list.forEach((idx) => {
+          if (idx % 2 == 0) {
+            // 짝수 담기
+            even.push(idx);
+          } else {
+            // 홀수 담기
+            odd.push(idx);
+          }
+        });
+        return { list: list, even: even, odd: odd }; // 최종값 return
+      }
+
+      console.log(randomList());
+    </script>
+  </body>
+</html>
