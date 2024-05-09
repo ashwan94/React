@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>통신</title>
+    <!-- axios CDN 링크 추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <script>
+      /* HTTP 통신 : ajax(fetch api, axios) 
+        
+        get 방식 : 주소창 URL 을 확인하면 됨
+
+        */
+
+      /* fetch api */
+      // fetch 는 자동으로 GET 으로 HTTP 요청한다
+      const serviceKey =
+        "7v4ZOVQdsbFUNxnpjLAUHkPce9%2FWTWqr%2Faojc0K%2BakxRdGj7xcTFN%2BUwNNVwdr1Vpx0J3L7yWDWncMEZbP%2FjCQ%3D%3D";
+      const url = `http://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst?serviceKey=${serviceKey}&numOfRows=10&dataType=json&pageNo=1&regId=11B00000&tmFc=202405090600`;
+
+      //   const goFetch = () => {
+      //     const val = fetch(url);
+
+      //     fetch(url)
+      //       .then((res) => {
+      //         console.log("HTTP 응답 결과");
+      //         console.log(res.ok);
+
+      //         if (!res.ok) {
+      //           // 서버에서 통신 error 발생했을 경우
+      //           throw new Error("error 발생");
+      //         }
+      //         // response.text(); : 텍스트 데이터 반환
+      //         // response.json(); : json 데이터를 파싱하여 js 객체로 반환
+      //         // response.blob(); : 바이너리 데이터
+      //         return res.json();
+      //       })
+      //       .then((data) => {
+      //         console.log("JSON data 확인");
+      //         console.log(data);
+      //         const result = data.response.body.items.item[0];
+      //         return result;
+
+      //         // DB INSET  또는 UPDATE
+
+      //     })
+      //     .catch((err) => {
+      //           console.log("error 내용 확인");
+      //         console.log(err);
+      //       });
+      //       console.log(val);
+      //       return val;
+      //   };
+      //   const data = goFetch();
+      //   console.log(data); // promise 객체 반환
+      //   data.then(console.log);
+
+    //   console.log("-------------------------");
+    //   const goFetch2 = async () => {
+    //     const res = await fetch(url);
+    //     if (!res.ok) {
+    //       throw new Error("error");
+    //     }
+
+    //     console.log("fetch 2번 예제");
+    //     const data = await res.json();
+    //     const weatherInfo = data.response.body.items.item[0];
+    //     return weatherInfo;
+    //   };
+    //   const result = goFetch2();
+    //   result.then(console.log);
+      // promise 객체로 return 되므로 axiso 안에서 return 된 data 를 가져오려면
+      // then() 으로 가져와야 한다
+
+      // fetch api 의 단점
+      // fetch 를 return 받고 외부에서 또 parsing 해줘야한다
+      // axios 를 사용하는 이유
+
+      /* axios :) async & await 
+    통신을 도와주는 라이브러리 설치
+    */
+
+    //   const goAxios = () => {
+    //     axios
+    //       .get(url)
+    //       .then((res) => {
+    //         console.log(res.data.response.body.items.item[0]);
+    //       })
+    //       .catch((err) => {
+    //         console.log(err);
+    //       });
+    //   };
+    //  goAxios();
+     
+     const goAxios2 = async () => {
+        const res = await axios.get(url).then((res) => {
+            console.log(res);
+            if(res.status != 200) {
+                throw new Error("error");
+            }
+            console.log(res.data);
+        })
+     }
+     goAxios2();
+    </script>
+  </body>
+</html>

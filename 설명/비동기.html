@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>비동기</title>
+  </head>
+  <body>
+    <script>
+      /* 프로미스 객체 : 정의, 실행하는 역할이 나뉜다 */
+      const confirm = true;
+      const promise = new Promise((resolve, reject) => {
+        if (confirm) {
+          setTimeout(() => resolve("성공!"),2000);
+        } else {
+          setTimeout(() => reject("실패!"),2000);
+        }
+      });
+
+      console.log(promise); // <fulfilled> : '성공'인 상태다
+
+        // status : pending(대기), fulfilled(성공/완료)
+        promise.then((res) => console.log(res)).catch((rej) => console.log(rej)).finally(() => console.log("종료"));
+
+
+
+        /* async, await */
+        // async : 함수 앞에 붙으면 함수를 비동기로 전환시켜줌
+        // 블록문 = pormise 객체로 변환시켜준다는 의미임
+        
+        // await : async 함수 내에서만 사용 가능하다
+        async function fetchUser() {
+            const result = await "/";
+
+            if(result){
+                alert("사용자 화면");
+            }else{
+                alert("문제 발생!");
+            }
+
+            const result2 = await "/";
+            if(result2){
+                alert("사용자 화면");
+            }else{
+                alert("문제 발생!");
+            }
+        }
+        fetchUser().then(console.log);
+    </script>
+  </body>
+</html>
