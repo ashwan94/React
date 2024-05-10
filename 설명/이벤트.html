@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트</title>
+</head>
+<body>
+    <input type="text" onchange={userNameOnChangeHandler} id="userName"/>
+    <ul>
+        <li>목록1</li>
+        <li>목록2</li>
+        <li>목록3</li>
+    </ul>
+    <script>
+        // event 객체
+        document.querySelector("#userName").addEventListener("change", (event) => {
+            console.log(event.target.value);
+        })
+        
+        document.querySelector("ul").addEventListener("click", (e) => {
+            console.log(e.target);
+        })
+        // 이벤트 접근하기
+        // 1. addEventListener
+        // document.querySelector("#userName").addEventListener("change", () => {});
+
+        // 2. onChange 직접 접근
+        // document.querySelector("#userName").onChange = () => {        };
+
+        // 3. jQuery - 라이브러리는 외우는게 아니라 찾는 것이다
+        // $("#userName").click();
+        
+    </script>
+</body>
+</html>
